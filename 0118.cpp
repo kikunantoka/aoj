@@ -63,43 +63,40 @@ int main() {
   cin.tie(0);
   ios::sync_with_stdio(false);
 
-  int zero;
   char c;
-  int count = 0;
 
-  cin >> h >> w;
-
-  REP(i, h) {
-    REP(j, w) {
-      cin >> c;
-      switch(c) {
-        case '@':
-          dp[i][j] = 1;
-          break;
-        case '#':
-          dp[i][j] = 2;
-          break;
-        case '*':
-          dp[i][j] = 3;
-          break;
-        default:
-          break;
+  while(cin >> h >> w && h && w) {
+    int count = 0;
+    REP(i, h) {
+      REP(j, w) {
+        cin >> c;
+        switch(c) {
+          case '@':
+            dp[i][j] = 1;
+            break;
+          case '#':
+            dp[i][j] = 2;
+            break;
+          case '*':
+            dp[i][j] = 3;
+            break;
+          default:
+            break;
+        }
       }
     }
-  }
 
-  cin >> zero >> zero;
-
-  REP(i, h) {
-    REP(j, w) {
-      if(dp[i][j] != 0) {
-        dfs(i, j, dp[i][j]);
-        count++;
+    REP(i, h) {
+      REP(j, w) {
+        if(dp[i][j] != 0) {
+          dfs(i, j, dp[i][j]);
+          count++;
+        }
       }
     }
-  }
 
-  cout << count << endl;
+    cout << count << endl;
+  }
 
   return 0;
 }
